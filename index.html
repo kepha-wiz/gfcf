@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="God First Charity Foundation — rescuing homeless children, orphans and restoring hope for elderly people in Mayuge, Busoga region, Uganda." />
+<title>God First Charity Foundation — Together We Can</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Reset & Base ---------- */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  :root {
+    --cream: #F4EFE6;
+    --cream-2: #EBE3D4;
+    --ink: #1A1A1A;
+    --forest: #1F3D2B;
+    --forest-2: #2A5238;
+    --terra: #C65D2E;
+    --terra-2: #A84A22;
+    --muted: #6B6258;
+    --line: #D9CFBE;
+    --white: #FFFFFF;
+    --shadow: 0 10px 30px rgba(26, 26, 26, 0.08);
+    --shadow-lg: 0 20px 60px rgba(26, 26, 26, 0.12);
+    --radius: 4px;
+    --radius-lg: 10px;
+    --container: 1240px;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: none; background: none; }
+  h1, h2, h3, h4 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; }
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--terra); font-weight: 600; display: inline-flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--terra); display: inline-block; }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(244, 239, 230, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: all .3s var(--ease);
+  }
+  .site-header.scrolled {
+    background: rgba(244, 239, 230, 0.96);
+    border-bottom-color: var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 0;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Instrument Serif', serif;
+    font-size: 22px; color: var(--forest);
+  }
+  .logo-mark {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--forest); color: var(--cream);
+    display: grid; place-items: center;
+    font-family: 'Instrument Serif', serif; font-size: 22px;
+    font-style: italic;
+  }
+  .logo small { display: block; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+  .nav-links { display: flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink);
+    position: relative; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--terra); }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; bottom: -6px;
+    width: 0; height: 1px; background: var(--terra);
+    transition: width .3s var(--ease);
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    transition: all .25s var(--ease);
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--terra); color: var(--white); }
+  .btn-primary:hover { background: var(--terra-2); transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn-outline { border: 1px solid var(--ink); color: var(--ink); }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+  .btn-dark { background: var(--forest); color: var(--cream); }
+  .btn-dark:hover { background: var(--forest-2); transform: translateY(-1px); }
+  .btn svg { width: 14px; height: 14px; transition: transform .25s var(--ease); }
+  .btn:hover svg { transform: translateX(3px); }
+
+  .menu-toggle { display: none; width: 44px; height: 44px; position: relative; }
+  .menu-toggle span {
+    position: absolute; left: 10px; width: 24px; height: 2px; background: var(--ink);
+    transition: all .3s var(--ease);
+  }
+  .menu-toggle span:nth-child(1) { top: 16px; }
+  .menu-toggle span:nth-child(2) { top: 22px; }
+  .menu-toggle span:nth-child(3) { top: 28px; }
+  .menu-toggle.open span:nth-child(1) { top: 22px; transform: rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { top: 22px; transform: rotate(-45deg); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 140px 0 80px;
+    position: relative;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px;
+    align-items: end;
+  }
+  .hero-title {
+    font-size: clamp(44px, 7vw, 96px);
+    line-height: 0.98;
+    color: var(--forest);
+    margin: 20px 0 28px;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--terra);
+    position: relative;
+  }
+  .hero-title em::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 4px;
+    height: 8px; background: var(--terra); opacity: 0.15; z-index: -1;
+  }
+  .hero-lead {
+    font-size: 18px; color: var(--muted); max-width: 520px;
+    margin-bottom: 36px;
+  }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .hero-media {
+    position: relative; aspect-ratio: 4/5;
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-badge {
+    position: absolute; bottom: 24px; left: 24px; right: 24px;
+    background: var(--cream); padding: 18px 22px;
+    border-radius: var(--radius); display: flex; align-items: center; gap: 16px;
+    box-shadow: var(--shadow);
+  }
+  .hero-badge-num {
+    font-family: 'Instrument Serif', serif; font-size: 42px;
+    color: var(--terra); line-height: 1;
+  }
+  .hero-badge-text { font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .hero-badge-text strong { color: var(--ink); display: block; font-weight: 600; font-size: 14px; }
+
+  .hero-meta {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 30px; border-top: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .hero-meta-item { font-size: 13px; color: var(--muted); }
+  .hero-meta-item strong { display: block; color: var(--ink); font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+
+  /* ---------- Marquee ---------- */
+  .marquee {
+    background: var(--forest); color: var(--cream);
+    padding: 18px 0; overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .marquee-track {
+    display: flex; gap: 60px; white-space: nowrap;
+    animation: scroll 40s linear infinite;
+    font-family: 'Instrument Serif', serif; font-size: 24px;
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 60px; }
+  .marquee-track span::after { content: "✦"; color: var(--terra); font-size: 16px; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- About ---------- */
+  .section { padding: 110px 0; }
+  .section-head { max-width: 760px; margin-bottom: 60px; }
+  .section-head h2 {
+    font-size: clamp(36px, 5vw, 60px);
+    color: var(--forest); margin: 18px 0 20px;
+  }
+  .section-head p { font-size: 17px; color: var(--muted); }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px;
+    align-items: center;
+  }
+  .about-media {
+    position: relative;
+  }
+  .about-media-main {
+    aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-media-main img { width: 100%; height: 100%; object-fit: cover; }
+  .about-media-sub {
+    position: absolute; bottom: -40px; right: -30px;
+    width: 55%; aspect-ratio: 1/1;
+    border-radius: var(--radius-lg); overflow: hidden;
+    border: 6px solid var(--cream);
+    box-shadow: var(--shadow-lg);
+  }
+  .about-media-sub img { width: 100%; height: 100%; object-fit: cover; }
+  .about-content h3 {
+    font-size: 38px; color: var(--forest); margin-bottom: 20px;
+  }
+  .about-content p { margin-bottom: 18px; color: #3d3a35; font-size: 16px; }
+  .about-quote {
+    margin: 32px 0; padding: 24px 28px;
+    background: var(--cream-2); border-left: 3px solid var(--terra);
+    border-radius: var(--radius);
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 20px; color: var(--forest); line-height: 1.4;
+  }
+  .about-quote cite {
+    display: block; font-family: 'Inter', sans-serif; font-style: normal;
+    font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--terra); margin-top: 12px; font-weight: 600;
+  }
+
+  /* ---------- Stats ---------- */
+  .stats {
+    background: var(--forest); color: var(--cream);
+    padding: 80px 0;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  }
+  .stat { text-align: left; }
+  .stat-num {
+    font-family: 'Instrument Serif', serif; font-size: 64px;
+    color: var(--cream); line-height: 1; margin-bottom: 10px;
+    display: flex; align-items: baseline; gap: 4px;
+  }
+  .stat-num sup { font-size: 32px; color: var(--terra); }
+  .stat-label {
+    font-size: 14px; color: rgba(244, 239, 230, 0.7);
+    max-width: 200px;
+  }
+  .stat-label strong { color: var(--cream); display: block; margin-bottom: 4px; font-weight: 600; }
+
+  /* ---------- Programs ---------- */
+  .programs-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .program-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    overflow: hidden; transition: all .35s var(--ease);
+    border: 1px solid var(--line);
+  }
+  .program-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: transparent;
+  }
+  .program-img {
+    aspect-ratio: 4/3; overflow: hidden; position: relative;
+  }
+  .program-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+  .program-card:hover .program-img img { transform: scale(1.05); }
+  .program-tag {
+    position: absolute; top: 16px; left: 16px;
+    background: var(--cream); color: var(--forest);
+    padding: 6px 12px; border-radius: 999px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 600;
+  }
+  .program-body { padding: 28px; }
+  .program-body h3 { font-size: 26px; color: var(--forest); margin-bottom: 12px; }
+  .program-body p { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+  .program-link {
+    font-size: 13px; font-weight: 600; color: var(--terra);
+    display: inline-flex; align-items: center; gap: 8px;
+    letter-spacing: 0.05em;
+  }
+  .program-link svg { width: 14px; height: 14px; transition: transform .25s var(--ease); }
+  .program-card:hover .program-link svg { transform: translate(3px, -3px); }
+
+  /* ---------- Stories ---------- */
+  .stories { background: var(--cream-2); }
+  .stories-grid {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px;
+  }
+  .story-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: transform .35s var(--ease);
+  }
+  .story-card:hover { transform: translateY(-4px); }
+  .story-card.featured { grid-row: span 2; }
+  .story-media { aspect-ratio: 16/10; overflow: hidden; }
+  .story-card.featured .story-media { aspect-ratio: 4/3; flex: 1; }
+  .story-media img { width: 100%; height: 100%; object-fit: cover; }
+  .story-body { padding: 28px; }
+  .story-body .eyebrow { font-size: 11px; margin-bottom: 14px; }
+  .story-body h3 { font-size: 24px; color: var(--forest); margin-bottom: 10px; line-height: 1.2; }
+  .story-card.featured .story-body h3 { font-size: 32px; }
+  .story-body p { font-size: 15px; color: var(--muted); }
+
+  /* ---------- Video ---------- */
+  .video-wrap {
+    position: relative; aspect-ratio: 16/9;
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    background: #2a2a2a;
+  }
+  .video-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+  .video-play {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px; height: 90px; border-radius: 50%;
+    background: var(--terra); color: var(--white);
+    display: grid; place-items: center;
+    transition: all .3s var(--ease);
+    box-shadow: 0 10px 40px rgba(198, 93, 46, 0.4);
+  }
+  .video-play::before {
+    content: ""; position: absolute; inset: -8px;
+    border-radius: 50%; border: 1px solid rgba(198, 93, 46, 0.4);
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+  .video-play svg { width: 28px; height: 28px; margin-left: 4px; }
+  .video-wrap:hover .video-play { transform: translate(-50%, -50%) scale(1.08); background: var(--terra-2); }
+  .video-caption {
+    position: absolute; bottom: 30px; left: 30px; right: 30px;
+    color: var(--white);
+  }
+  .video-caption h3 { font-size: 32px; margin-bottom: 6px; }
+  .video-caption p { font-size: 14px; opacity: 0.85; }
+
+  /* ---------- Values ---------- */
+  .values { background: var(--forest); color: var(--cream); }
+  .values .section-head h2 { color: var(--cream); }
+  .values .section-head p { color: rgba(244, 239, 230, 0.7); }
+  .values-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .value-card {
+    padding: 32px 28px; border: 1px solid rgba(244, 239, 230, 0.15);
+    border-radius: var(--radius-lg);
+    transition: all .3s var(--ease);
+  }
+  .value-card:hover {
+    background: rgba(244, 239, 230, 0.05);
+    border-color: var(--terra);
+    transform: translateY(-4px);
+  }
+  .value-num {
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 48px; color: var(--terra); line-height: 1; margin-bottom: 20px;
+  }
+  .value-card h3 { font-size: 26px; color: var(--cream); margin-bottom: 12px; }
+  .value-card p { font-size: 14px; color: rgba(244, 239, 230, 0.7); line-height: 1.6; }
+
+  /* ---------- Donate ---------- */
+  .donate {
+    background: var(--cream-2);
+  }
+  .donate-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+  .donate-content h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--forest); margin: 18px 0 22px;
+  }
+  .donate-content p { font-size: 17px; color: var(--muted); margin-bottom: 30px; }
+  .donate-amounts {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .amount-btn {
+    padding: 18px; border: 1px solid var(--line);
+    background: var(--white); border-radius: var(--radius);
+    font-weight: 600; color: var(--ink);
+    transition: all .2s var(--ease);
+    text-align: center;
+  }
+  .amount-btn strong { display: block; font-family: 'Instrument Serif', serif; font-size: 28px; color: var(--forest); }
+  .amount-btn span { font-size: 12px; color: var(--muted); display: block; margin-top: 4px; }
+  .amount-btn:hover, .amount-btn.active {
+    border-color: var(--terra); background: var(--white);
+    transform: translateY(-2px); box-shadow: var(--shadow);
+  }
+  .amount-btn.active strong { color: var(--terra); }
+  .donate-media {
+    aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-lg); position: relative;
+  }
+  .donate-media img { width: 100%; height: 100%; object-fit: cover; }
+  .donate-media::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(31, 61, 43, 0.4), transparent 50%);
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;
+  }
+  .contact-info h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--forest); margin: 18px 0 22px;
+  }
+  .contact-info > p { color: var(--muted); margin-bottom: 40px; font-size: 17px; }
+  .contact-list { list-style: none; }
+  .contact-list li {
+    display: flex; gap: 18px; padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .contact-list li:first-child { border-top: 1px solid var(--line); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--cream-2); display: grid; place-items: center;
+    color: var(--terra); flex-shrink: 0;
+  }
+  .contact-icon svg { width: 18px; height: 18px; }
+  .contact-list strong { display: block; font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 4px; letter-spacing: 0.05em; }
+  .contact-list span { font-size: 16px; color: var(--ink); font-weight: 500; }
+
+  .contact-form {
+    background: var(--white); padding: 40px;
+    border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .form-field { display: flex; flex-direction: column; margin-bottom: 16px; }
+  .form-field label {
+    font-size: 12px; font-weight: 600; color: var(--ink);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    padding: 14px 16px; border: 1px solid var(--line);
+    border-radius: var(--radius); background: var(--cream);
+    font-family: inherit; font-size: 15px; color: var(--ink);
+    transition: all .2s var(--ease);
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    outline: none; border-color: var(--terra); background: var(--white);
+  }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink); color: var(--cream);
+    padding: 80px 0 30px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo { color: var(--cream); margin-bottom: 20px; }
+  .footer-brand .logo-mark { background: var(--terra); color: var(--cream); }
+  .footer-brand p { font-size: 14px; color: rgba(244, 239, 230, 0.6); max-width: 320px; margin-bottom: 24px; }
+  .footer-col h4 {
+    font-family: 'Inter', sans-serif; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 20px; font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    font-size: 14px; color: rgba(244, 239, 230, 0.7);
+    transition: color .2s;
+  }
+  .footer-col a:hover { color: var(--cream); }
+  .footer-bottom {
+    padding-top: 30px; border-top: 1px solid rgba(244, 239, 230, 0.1);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 20px;
+    font-size: 13px; color: rgba(244, 239, 230, 0.5);
+  }
+  .socials { display: flex; gap: 12px; }
+  .socials a {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: rgba(244, 239, 230, 0.08);
+    display: grid; place-items: center;
+    transition: all .2s var(--ease);
+  }
+  .socials a:hover { background: var(--terra); transform: translateY(-2px); }
+  .socials svg { width: 16px; height: 16px; }
+
+  /* ---------- Animations ---------- */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all .8s var(--ease); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hero-media { max-width: 500px; }
+    .about-grid, .donate-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+    .about-media-sub { right: 20px; bottom: -30px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 30px; }
+    .programs-grid { grid-template-columns: repeat(2, 1fr); }
+    .stories-grid { grid-template-columns: 1fr; }
+    .story-card.featured { grid-row: auto; }
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+  @media (max-width: 720px) {
+    .section { padding: 80px 0; }
+    .hero { padding: 110px 0 60px; }
+    .nav-links { display: none; position: fixed; top: 76px; left: 0; right: 0; background: var(--cream); flex-direction: column; padding: 30px 24px; gap: 20px; border-bottom: 1px solid var(--line); box-shadow: var(--shadow); }
+    .nav-links.open { display: flex; }
+    .menu-toggle { display: block; }
+    .programs-grid, .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-num { font-size: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+    .donate-amounts { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .contact-form { padding: 28px; }
+    .hero-meta { gap: 24px; }
+    .about-media-sub { width: 50%; right: 10px; bottom: -20px; }
+    .marquee-track { font-size: 18px; gap: 40px; }
+    .marquee-track span { gap: 40px; }
+    .video-caption { left: 20px; right: 20px; bottom: 20px; }
+    .video-caption h3 { font-size: 22px; }
+    .video-play { width: 70px; height: 70px; }
+    .video-play svg { width: 22px; height: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo">
+        <span class="logo-mark">G</span>
+        <span>
+          God First Charity
+          <small>Foundation · Est. 2025</small>
+        </span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#programs">Our Work</a>
+        <a href="#stories">Stories</a>
+        <a href="#values">Values</a>
+        <a href="#contact">Contact</a>
+        <a href="#donate" class="btn btn-primary">
+          Donate
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <span class="eyebrow reveal">Mayuge · Busoga · Uganda</span>
+        <h1 class="hero-title reveal">
+          Restoring <em>hope</em>, one life at a time.
+        </h1>
+        <p class="hero-lead reveal">
+          We walk alongside the elderly, orphans and homeless children of Eastern Uganda — providing food, shelter, healthcare, education and spiritual care so no one walks alone.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#donate" class="btn btn-primary">
+            Support our work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#about" class="btn btn-outline">Our story</a>
+        </div>
+        <div class="hero-meta reveal">
+          <div class="hero-meta-item">
+            <strong>Motto</strong>
+            "Together we can"
+          </div>
+          <div class="hero-meta-item">
+            <strong>Founded</strong>
+            3rd March, 2025
+          </div>
+          <div class="hero-meta-item">
+            <strong>Registered</strong>
+            Community Based Organization
+          </div>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img src="IMG-20260119-WA0020.jpg" alt="Children and elderly being supported by God First Charity Foundation" />
+        <div class="hero-badge">
+          <div class="hero-badge-num">46</div>
+          <div class="hero-badge-text">
+            <strong>Lives touched so far</strong>
+            Elderly, orphans and homeless children supported with food, clothing, shelter and care.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Food Security</span><span>Healthcare</span><span>Education</span><span>Shelter</span><span>Spiritual Care</span><span>Counselling</span><span>Community Development</span>
+    <span>Food Security</span><span>Healthcare</span><span>Education</span><span>Shelter</span><span>Spiritual Care</span><span>Counselling</span><span>Community Development</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media reveal">
+        <div class="about-media-main">
+          <img src="IMG-20260821-WA0122.jpg" alt="Elderly woman receiving care" />
+        </div>
+        <div class="about-media-sub">
+          <img src="IMG-20260825-WA0033.jpg" alt="Children at the foundation" />
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="eyebrow reveal">Who we are</span>
+        <h2 class="reveal">A calling born from compassion, rooted in faith.</h2>
+        <p class="reveal">
+          God First Charity Foundation began as a personal conviction — to extend a helping hand to the many elderly, orphans and homeless children across Mayuge and the wider Busoga region who lack the basic necessities of life: food, shelter, clothing and medical care.
+        </p>
+        <p class="reveal">
+          Many of the elderly cannot afford these needs on their own. Some have children who have abandoned them. Children roam the streets without guidance. We believe every person, regardless of age or status, deserves a life of dignity.
+        </p>
+        <blockquote class="about-quote reveal">
+          "Whoever is kind to the poor lends to the Lord, and He will reward them for what they have done."
+          <cite>— Proverbs 19:17</cite>
+        </blockquote>
+        <p class="reveal">
+          Today we are a registered Community Based Organization supervised by a ministry director and board, championing the rights and interests of the most vulnerable — putting them first.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="stat-num">10<sup>+</sup></div>
+        <div class="stat-label"><strong>Elderly supported</strong>with food, clothing, shelter and healthcare</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">30<sup>+</sup></div>
+        <div class="stat-label"><strong>Orphans cared for</strong>given education, meals and a safe place to grow</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">6<sup>+</sup></div>
+        <div class="stat-label"><strong>Homeless children</strong>rescued from the streets and brought into community</div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-num">1<sup>yr</sup></div>
+        <div class="stat-label"><strong>Since March 2025</strong>serving Mayuge District, Busoga region</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section" id="programs">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">Our work</span>
+      <h2 class="reveal">Lasting solutions, delivered with love.</h2>
+      <p class="reveal">Our programmes address the whole person — body, mind and spirit. From the food on a plate to the hope in a heart, we are committed to creating change that lasts.</p>
+    </div>
+    <div class="programs-grid">
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="food.jpg" alt="Food and nutrition support" />
+          <span class="program-tag">Nutrition</span>
+        </div>
+        <div class="program-body">
+          <h3>Food & Nutrition</h3>
+          <p>Regular meals and nutritional support for the elderly and children who would otherwise go hungry — because no one should sleep on an empty stomach.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="health.jpg" alt="Healthcare and medical support" />
+          <span class="program-tag">Healthcare</span>
+        </div>
+        <div class="program-body">
+          <h3>Medical Care</h3>
+          <p>Access to medicine, first aid, health awareness and medical care for those who cannot afford treatment — preventing illness before it becomes tragedy.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="education.jpg" alt="Education for orphans and children" />
+          <span class="program-tag">Education</span>
+        </div>
+        <div class="program-body">
+          <h3>Education</h3>
+          <p>School fees, books and learning opportunities for orphans and homeless children — opening doors to a future they could never reach alone.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="shelter.jpg" alt="Shelter and housing" />
+          <span class="program-tag">Shelter</span>
+        </div>
+        <div class="program-body">
+          <h3>Shelter & Housing</h3>
+          <p>Safe, dignified housing for the elderly and children without a home — working toward a permanent residence where everyone belongs.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="spiritual.jpg" alt="Spiritual empowerment" />
+          <span class="program-tag">Spiritual</span>
+        </div>
+        <div class="program-body">
+          <h3>Spiritual Empowerment</h3>
+          <p>Counselling, prayer and spiritual growth aligned with Christian values — restoring the soul alongside the body.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="program-card reveal">
+        <div class="program-img">
+          <img src="community.jpg" alt="Community development" />
+          <span class="program-tag">Community</span>
+        </div>
+        <div class="program-body">
+          <h3>Community Development</h3>
+          <p>Fighting loneliness, stigma and poverty through better living conditions, outreach and neighbourly love that transforms entire communities.</p>
+          <a href="#donate" class="program-link">
+            Support this cause
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORIES ============ -->
+<section class="section stories" id="stories">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">Stories of hope</span>
+      <h2 class="reveal">Faces behind the mission.</h2>
+      <p class="reveal">Every number in our reports is a name, a story, a life restored. Here are a few of the people whose lives have been touched by your generosity.</p>
+    </div>
+    <div class="stories-grid">
+      <article class="story-card featured reveal">
+        <div class="story-media">
+          <img src="IMG-20260821-WA0122.jpg" alt="Story of hope" />
+        </div>
+        <div class="story-body">
+          <span class="eyebrow">Elderly Care</span>
+          <h3>From loneliness to a family again</h3>
+          <p>After years of being forgotten by her own children, Mama Grace now has a place where she is known by name, fed daily, and visited weekly. "I thought I would die alone," she says. "Now I have a family."</p>
+        </div>
+      </article>
+      <article class="story-card reveal">
+        <div class="story-media">
+          <img src="bag.jpg" alt="Story of a child" />
+        </div>
+        <div class="story-body">
+          <span class="eyebrow">Orphan Support</span>
+          <h3>A boy who finally has a school bag</h3>
+          <p>Seven-year-old David spent his days on the streets of Mayuge. Today he is in Primary 3, with books, a uniform and a dream.</p>
+        </div>
+      </article>
+      <article class="story-card reveal">
+        <div class="story-media">
+          <img src="community (2).jpg" alt="Story of community" />
+        </div>
+        <div class="story-body">
+          <span class="eyebrow">Community</span>
+          <h3>A village that learned to care</h3>
+          <p>What started with 10 elderly neighbours has grown into a movement — a community rediscovering what it means to look after its own.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">See our work</span>
+      <h2 class="reveal">A short film from Mayuge.</h2>
+      <p class="reveal">Step inside the daily life of God First Charity Foundation — meet the people we serve and the team who serves them.</p>
+    </div>
+    <div class="video-wrap reveal" id="videoWrap">
+      <img src="https://picsum.photos/seed/gfcf-video/1400/800" alt="Video thumbnail" />
+      <button class="video-play" aria-label="Play video">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="video-caption">
+        <h3>Together We Can</h3>
+        <p>3 min · A look at life inside the foundation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES ============ -->
+<section class="section values" id="values">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal" style="color: var(--terra);">Our values — HTP&F</span>
+      <h2 class="reveal">The heart behind everything we do.</h2>
+      <p class="reveal">Four values guide our conduct, our relationships with beneficiaries, partners and each other. They define what is right, and who we are.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <h3>Hard Work</h3>
+        <p>Tirelessly serving others with commitment, love and determination — sacrificing time, energy and resources to improve lives.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">02</div>
+        <h3>Teamwork</h3>
+        <p>Working together, sharing ideas, responsibilities, skills and support so that the charity can help more people, more effectively.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">03</div>
+        <h3>Passion</h3>
+        <p>A strong love and deep concern for helping others — especially those in greatest need, when no one else is looking.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-num">04</div>
+        <h3>Family</h3>
+        <p>A group of people who care for, support and protect one another like relatives — showing love, unity, compassion and responsibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DONATE ============ -->
+<section class="section donate" id="donate">
+  <div class="container">
+    <div class="donate-grid">
+      <div class="donate-content">
+        <span class="eyebrow reveal">Give today</span>
+        <h2 class="reveal">Your gift becomes someone's tomorrow.</h2>
+        <p class="reveal">Every contribution — no matter the size — directly funds food, medicine, school fees, shelter and spiritual care for the most vulnerable in Mayuge District.</p>
+        <div class="donate-amounts reveal">
+          <button class="amount-btn" data-amount="25">
+            <strong>$25</strong>
+            <span>Feeds a child for a month</span>
+          </button>
+          <button class="amount-btn active" data-amount="75">
+            <strong>$75</strong>
+            <span>School supplies for one term</span>
+          </button>
+          <button class="amount-btn" data-amount="150">
+            <strong>$150</strong>
+            <span>Medical care for an elder</span>
+          </button>
+          <button class="amount-btn" data-amount="500">
+            <strong>$500</strong>
+            <span>Shelter support for a family</span>
+          </button>
+          <button class="amount-btn" data-amount="1000">
+            <strong>$1,000</strong>
+            <span>Farm & poultry project</span>
+          </button>
+          <button class="amount-btn" data-amount="custom">
+            <strong>Other</strong>
+            <span>Custom amount</span>
+          </button>
+        </div>
+        <div class="hero-cta reveal">
+          <a href="#" class="btn btn-primary">
+            Donate now
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="btn btn-outline">Partner with us</a>
+        </div>
+      </div>
+      <div class="donate-media reveal">
+        <img src="https://picsum.photos/seed/gfcf-donate/700/900" alt="Hands giving support" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="eyebrow reveal">Get in touch</span>
+        <h2 class="reveal">Let's walk this road together.</h2>
+        <p class="reveal">Whether you want to volunteer, partner, donate, or simply learn more — we'd love to hear from you.</p>
+        <ul class="contact-list">
+          <li class="reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Location</strong>
+              <span>Opposite Mayuge Light Secondary School, Mayuge Town Council, Bunya County West, Mayuge District, Eastern Uganda</span>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <strong>Phone</strong>
+              <span>+256 746 079 333 · +256 791 652 716</span>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>godfirstcharityfoundation2005@gmail.com</span>
+            </div>
+          </li>
+          <li class="reveal">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <strong>CEO & Founder</strong>
+              <span>Mukisa John · P.O. Box 1317, Mayuge, Uganda</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <form class="contact-form reveal" id="contactForm">
+        <h3 style="font-size: 28px; color: var(--forest); margin-bottom: 8px;">Send us a message</h3>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 28px;">We respond within 48 hours.</p>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" required />
+          </div>
+          <div class="form-field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="form-field">
+          <label for="subject">I'm interested in</label>
+          <select id="subject">
+            <option>Making a donation</option>
+            <option>Volunteering</option>
+            <option>Partnership / Sponsorship</option>
+            <option>General enquiry</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Your message</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" style="width: 100%; justify-content: center;">
+          Send message
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">G</span>
+          <span>
+            God First Charity
+            <small>Foundation · Est. 2025</small>
+          </span>
+        </a>
+        <p>Rescuing homeless children, restoring hope for the elderly, and walking with the most vulnerable across Mayuge and the Busoga region.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Foundation</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#programs">Our work</a></li>
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#values">Our values</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <ul>
+          <li><a href="#donate">Donate</a></li>
+          <li><a href="#contact">Volunteer</a></li>
+          <li><a href="#contact">Partner with us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+256746079333">+256 746 079 333</a></li>
+          <li><a href="mailto:godfirstcharityfoundation2005@gmail.com">Email us</a></li>
+          <li><a href="#">P.O. Box 1317, Mayuge</a></li>
+          <li><a href="#">Uganda, East Africa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 God First Charity Foundation. All rights reserved.</div>
+      <div>Registered Community Based Organization · Mayuge District</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Donation amount selector
+  const amountBtns = document.querySelectorAll('.amount-btn');
+  amountBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      amountBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Video placeholder click
+  document.getElementById('videoWrap').addEventListener('click', () => {
+    alert('Video player would load here. Replace this placeholder with your foundation\'s video embed (YouTube, Vimeo, or self-hosted).');
+  });
+
+  // Contact form
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Thank you for your message. Our team will respond within 48 hours.');
+    e.target.reset();
+  });
+
+  // Animated stat counters
+  const animateCount = (el) => {
+    const text = el.textContent;
+    const match = text.match(/(\d+)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    const suffix = text.replace(match[1], '');
+    let current = 0;
+    const step = Math.max(1, Math.ceil(target / 40));
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.innerHTML = current + suffix;
+    }, 30);
+  };
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCount(e.target);
+        statObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => statObserver.observe(el));
+</script>
+
+</body>
+</html>
