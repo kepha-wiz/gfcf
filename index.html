@@ -914,7 +914,6 @@
       <div class="about-media reveal">
         <div class="about-media-main">
           <div class="media-tint">
-            <!-- Fixed video tag: proper autoplay, muted, loop, and playsinline for mobile compatibility -->
             <video src="blank.mp4" autoplay muted loop playsinline></video>
           </div>
         </div>
@@ -1012,12 +1011,10 @@
           </div>
         </div>
 
-        <!-- Project Video properly wrapped -->
         <div class="video-wrapper reveal">
           <video src="vid.mp4" autoplay muted loop playsinline controls></video>
         </div>
         
-        <!-- Director's Thank You Video -->
         <div class="director-message reveal">
           <h4>A Message from Our Director</h4>
           <div class="video-wrapper" style="margin-top: 0;">
@@ -1076,7 +1073,6 @@
     <div class="programs-grid">
       <article class="program-card reveal">
         <div class="program-img">
-          <!-- Fixed video tag for seamless autoplay and scaling -->
           <video src="food.mp4" autoplay muted loop playsinline></video>
           <span class="program-tag">Nutrition</span>
         </div>
@@ -1249,14 +1245,16 @@
         <p>All three routes reach the foundation directly — pick PayPal for card payments from anywhere, bank transfer for larger local or diaspora gifts, or mobile money for a quick send from your phone.</p>
       </div>
       <div class="giving-grid">
+        
+        <!-- PAYPAL CARD (Properly Integrated) -->
         <div class="giving-card">
           <h4>PayPal</h4>
           <p class="giving-note">Card and PayPal balance accepted — works from anywhere in the world.</p>
-          <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=godfirstcharityfoundation2005%40gmail.com&currency_code=USD&item_name=Donation+to+God+First+Charity+Foundation" target="_blank" rel="noopener" class="btn btn-primary giving-btn" style="margin-top: 18px;">
-            Donate via PayPal
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <p class="giving-note" style="margin-top: 10px;">Opens PayPal securely — sends directly to godfirstcharityfoundation2005@gmail.com.</p>
+          
+          <!-- PayPal Hosted Button Container -->
+          <div id="paypal-container-EAAC6Q3X468EJ" style="margin-top: 16px; min-height: 120px;"></div>
+          
+          <p class="giving-note" style="margin-top: 10px; font-size: 12px;">Secure checkout via PayPal.</p>
         </div>
 
         <div class="giving-card">
@@ -1317,17 +1315,20 @@
           </li>
         </ul>
       </div>
-      <form class="contact-form reveal" id="contactForm">
+      
+      <!-- NOTE: To make this form actually send emails, sign up for free at https://formspree.io -->
+      <!-- Replace "YOUR_FORM_ID" below with the actual ID Formspree gives you -->
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <h3 style="font-size: 26px; color: var(--ink); margin-bottom: 8px;">Send us a message</h3>
         <p style="color: var(--muted-light); font-size: 14px; margin-bottom: 26px;">We respond within 48 hours.</p>
         <div class="form-row">
-          <div class="form-field"><label for="fname">First name</label><input type="text" id="fname" required /></div>
-          <div class="form-field"><label for="lname">Last name</label><input type="text" id="lname" required /></div>
+          <div class="form-field"><label for="fname">First name</label><input type="text" id="fname" name="fname" required /></div>
+          <div class="form-field"><label for="lname">Last name</label><input type="text" id="lname" name="lname" required /></div>
         </div>
-        <div class="form-field"><label for="email">Email</label><input type="email" id="email" required /></div>
+        <div class="form-field"><label for="email">Email</label><input type="email" id="email" name="email" required /></div>
         <div class="form-field">
           <label for="subject">I'm interested in</label>
-          <select id="subject">
+          <select id="subject" name="subject">
             <option>Making a donation</option>
             <option>Land & Construction Campaign</option>
             <option>Volunteering</option>
@@ -1335,7 +1336,7 @@
             <option>General enquiry</option>
           </select>
         </div>
-        <div class="form-field"><label for="message">Your message</label><textarea id="message" required></textarea></div>
+        <div class="form-field"><label for="message">Your message</label><textarea id="message" name="message" required></textarea></div>
         <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
           Send message<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
@@ -1399,10 +1400,21 @@
   </a>
 </div>
 
+<!-- ============ SCRIPTS ============ -->
+<!-- PayPal SDK (Moved to bottom for valid HTML and performance) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA4HQPDAZjY7wRc3t7wQl_bgy3aZN8bfdouUfWeE0fRKv6wsEUm54bWXIKxzjoD80iwsuUbSvBMuO37IM&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
 <script>
+  // Render PayPal Button
+  paypal.HostedButtons({
+    hostedButtonId: "EAAC6Q3X468EJ",
+  }).render("#paypal-container-EAAC6Q3X468EJ");
+
+  // Header scroll effect
   const header = document.getElementById('siteHeader');
   window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
 
+  // Mobile menu toggle
   const toggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   
@@ -1420,6 +1432,7 @@
     })
   );
 
+  // Scroll reveal animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { 
       if (e.isIntersecting) { 
@@ -1431,6 +1444,7 @@
   
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  // Donate amount selection
   const amountBtns = document.querySelectorAll('.amount-btn');
   amountBtns.forEach(btn => 
     btn.addEventListener('click', () => { 
@@ -1439,12 +1453,7 @@
     })
   );
 
-  document.getElementById('contactForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for your message. Our team will respond within 48 hours.');
-    e.target.reset();
-  });
-
+  // Copy to clipboard functionality
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', async () => {
       const value = btn.getAttribute('data-copy');
@@ -1468,6 +1477,7 @@
     });
   });
 
+  // Stat number counting animation
   const animateCount = (el) => {
     const text = el.textContent;
     const match = text.match(/(\d+)/);
